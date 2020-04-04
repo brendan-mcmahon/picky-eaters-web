@@ -1,0 +1,5 @@
+<h3>{{restaurant.name}}</h3>
+
+<li *ngFor="let review of reviews">
+  {{review.person}} {{review.orderAgain ? 'would' : 'would not'}} order {{review.name}} again.
+</li>
