@@ -1,5 +1,15 @@
 <h3>{{restaurant.name}}</h3>
 
-<li *ngFor="let review of reviews">
-  {{review.person}} {{review.orderAgain ? 'would' : 'would not'}} order {{review.name}} again.
-</li>
+<div *ngIf="reviews.length > 0">
+  <li *ngFor="let review of reviews">
+    {{review.person}} {{review.orderAgain ? 'would' : 'would not'}} order {{review.name}} again.
+  </li>
+</div>
+<div *ngIf="reviews.length == 0">No reviews found</div>
+
+<button *ngIf="!displayAddForm" (click)="toggleAddForm()">Add</button>
+<div *ngIf="!displayAddForm">
+  <app-review-form></app-review-form>
+  <!-- <input [(ngModel)]="newReview" type="text">
+  <button (click)="submitNewReview()">submit</button> -->
+</div>

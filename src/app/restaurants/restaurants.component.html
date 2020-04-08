@@ -1,4 +1,9 @@
 <li *ngFor="let r of restaurants">
   <h2><a [routerLink]="['/reviews', r.id]">{{r.name}}</a></h2>
 </li>
-<button>Add</button>
+<button *ngIf="!displayAddForm" (click)="toggleAddForm()">Add</button>
+<div *ngIf="displayAddForm">
+  <label>Name:</label>
+  <input [(ngModel)]="newRestaurantName" type="text">
+  <button (click)="submitNewRestaurant()">submit</button>
+</div>

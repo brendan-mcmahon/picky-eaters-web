@@ -11,6 +11,10 @@ export class RestaurantsComponent implements OnInit {
 
   restaurants: Restaurant[] = [];
 
+  displayAddForm = false;
+
+  newRestaurantName: string;
+
   constructor(private restaurantsService: RestaurantsService) { }
 
   ngOnInit() {
@@ -20,8 +24,15 @@ export class RestaurantsComponent implements OnInit {
       });
   }
 
-  getRestaurants(): void {
-
+  toggleAddForm() {
+    this.displayAddForm = !this.displayAddForm;
   }
 
+  submitNewRestaurant() {
+    this.restaurantsService.addRestaurant(this.newRestaurantName)
+      .subscribe({
+        next: data => this.restaurants.push(data),
+        error: error => console.error('There was an error!', error)
+    })
+  }
 }

@@ -10,6 +10,7 @@ import { Review } from './restaurants/review.model';
 })
 export class RestaurantsService {
 
+
   private cachedRestaurants: Restaurant[] = [];
 
   constructor(private http: HttpClient) { }
@@ -26,5 +27,9 @@ export class RestaurantsService {
 
   getReviews(restaurantId: string): Observable<Review[]> {
     return this.http.get<Review[]>(`https://picky-eaters-api.herokuapp.com/reviews/${restaurantId}`);
+  }
+
+  addRestaurant(newRestaurantName: string): Observable<Restaurant> {
+    return this.http.post<Restaurant>('https://picky-eaters-api.herokuapp.com/restaurant', { name: newRestaurantName });
   }
 }

@@ -13,6 +13,8 @@ export class ReviewsComponent implements OnInit {
 
   restaurant: Restaurant = {id: '', name: ''};
   reviews: Review[] = [];
+  displayAddForm = false;
+  newReview: Review;
 
   constructor(private route: ActivatedRoute, private restaurantService: RestaurantsService) { }
 
@@ -37,6 +39,14 @@ export class ReviewsComponent implements OnInit {
         }
       });
     });
+  }
+
+  toggleAddForm() {
+    this.displayAddForm = !this.displayAddForm;
+  }
+
+  submitNewReview() {
+    this.restaurantService
   }
 
 }
